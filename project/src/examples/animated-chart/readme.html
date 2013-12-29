@@ -1,0 +1,9 @@
+<p>Making interactive charts is hard. Charts have many components besides the data itself &ndash; controls, axes, labels, annotations &ndash; and they often don't need to update at the same time as each other. Normally, you're faced with a choice between having several different <code>render</code> functions, or wastefully re-rendering the entire chart when things change.</p>
+
+<p>For this reason, dedicated charting libraries have become popular. And that's a shame, because it means you're stuck with line charts and bar charts and pie charts and scatter charts, and don't you dare have any data that's better represented using a less conventional chart type, like this plot of high and low temperatures.</p>
+
+<p>Faced with a choice between freedom and ease of use, many developers turn to <a href='d3js.org'>D3</a>. D3 is a terrific library, and I won't hear a bad word said about it, but it doesn't solve the problem of efficiently updating different components of a chart because it has no concept of <em>state</em>.
+
+<p><span class='logo'>Ractive.js</span> takes a fundamentally different approach to other libraries. Rather than programmatically building up the different components of your chart, and writing logic to update those components, you write your SVG the same way you'd write an HTML template. When it's time to update the chart, you just throw the new state at it &ndash; the dependency tracking ensures that we only re-render what's changed. This makes it trivially easy to animate the chart when the user changes city via the drop-down menu.</p>
+
+<p>Note also that we don't need to faff about with event handlers and render logic to switch between celsius and fahrenheit &ndash; when the user switches between them, <span class='logo'>Ractive.js</span> knows what to do, because the labels' dependency on <code>degreeType</code> is written into the template.</p>

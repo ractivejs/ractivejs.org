@@ -1,0 +1,53 @@
+h3 {
+	font-family: 'Voltaire';
+}
+
+.current-rating {
+	float: left;
+	margin-right: 2em;
+	padding-top: 2em;
+	text-align: center;
+}
+
+.current-rating strong {
+	display: block;
+	clear: both;
+	font-size: 6em;
+	font-family: 'Voltaire';
+}
+
+.ratings {
+	float: left;
+	border-left: 1px solid #eee;
+	padding-left: 1em;
+}
+
+.rating {
+	margin: 0 0 1em 0;
+}
+
+.rating:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.star {
+	font-size: 2em;
+	color: #eee;
+	cursor: pointer;
+	display: block;
+	float: left;
+}
+
+.readonly .star {
+	cursor: default;
+}
+
+.highlighted {
+	color: #ccc;
+}
+
+.selected {
+	color: #729d34;
+}

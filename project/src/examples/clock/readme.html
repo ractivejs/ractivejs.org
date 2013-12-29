@@ -1,0 +1,15 @@
+<p>This example demonstrates the use of expressions to simplify the process of turning raw data (such as the current time) into a renderable view that uses that data in many different ways.</p>
+
+<p>Normally, you'd probably have a <code>render</code> function which got all the information we need to update (the day, date, month, hour, minute, second) and calculated any derived values (the rotation of the clock hands, the suffix to append to the date), then updated the view one element at a time.</p>
+
+<p>If you wanted to minimise interactions with the DOM (which are bad for performance) then you'd have to store all these values so you could compare them between renders.</p>
+
+<p>Or perhaps you'd have a bunch of different views &ndash; one for the 'Today is...' sentence, one for the digital clock, one for the analogue clock (or possibly one for each of the analogue clock's hands) &ndash; each with their own unique <code>render</code> method. You'd still have to store a load of different references, but at least your code would look neater.</p>
+
+<p>With <span class='logo'>Ractive.js</span>, you only need to store a single reference to the <code>ractive</code> object, and the render function looks like this:</p>
+
+<pre>
+ractive.set( 'date', new Date() );
+</pre>
+
+<p>And that's it &ndash; all the state management and dependency tracking is done for you.</p>
