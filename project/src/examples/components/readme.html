@@ -1,5 +1,0 @@
-<p>Components are a way of encapsulating complex functionality within a <span class='logo'>Ractive.js</span> template. Conceptually, they're not dissimilar to <a href='http://www.webcomponentsshift.com'>Web Components</a>, <a href='http://emberjs.com/api/classes/Ember.Component.html'>Ember.Component</a> or <a href='http://docs.angularjs.org/guide/directive'>Angular directives</a>.</p>
-
-<p>In this example, we've created a <code>&lt;rv-donutchart/&gt;</code> component. Each chart is a self-contained, isolated unit, but it can observe data from the surrounding context via its <em>attributes</em>. Look at the template and javascript code to see how this works in practice. (The data-binding works in both directions &ndash; we're not using it here, but a component can change data that it has 'access' to.)</p>
-
-<p>Components can also fire events, which the parent <code>ractive</code> can listen to in the normal way. In this case we're listening for the <code>select</code> event &ndash; which each donut fires when the user moves over a segment &ndash; and responding by setting the <code>selected</code> property to the ID of the segment under the pointer.</p>
