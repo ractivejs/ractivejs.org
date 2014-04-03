@@ -13,7 +13,8 @@ module.exports = function ( grunt ) {
 		pkg: grunt.file.readJSON( 'package.json' ),
 
         paths: {
-            'shared': '../../shared/js',
+            'shared': '../../shared',
+            'codemirror': 'shared/js/codemirror',
 
             // libraries
             'ractive': 'lib/ractive',

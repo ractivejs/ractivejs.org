@@ -2,7 +2,7 @@ require([
 	'ractive',
 	'rvc!components/helloworld',
 
-	'shared/utils/nav'
+	'shared/js/utils/nav'
 ], function ( Ractive, HelloWorld ) {
 
 	'use strict';
