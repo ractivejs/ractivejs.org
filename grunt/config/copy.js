@@ -1,10 +1,10 @@
 module.exports = {
-	example: {
+	assets: {
 		files: [{
+			cwd: 'shared/assets/',
 			expand: true,
-			cwd: 'src/',
-			src: ['**/*'],
-			dest: 'build/'
+			src: '**',
+			dest: 'build/assets/'
 		}]
 	}
 };

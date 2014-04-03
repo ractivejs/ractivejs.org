@@ -7,8 +7,12 @@ module.exports = function ( grunt ) {
 
     var config, dependency;
 
+    require( 'jit-grunt' )( grunt );
+
     config = {
-        pkg: grunt.file.readJSON( 'package.json' )
+        pkg: grunt.file.readJSON( 'package.json' ),
+
+        nav: grunt.file.read( 'shared/partials/nav.html' )
     };
 
     // Read config files from the `grunt/config/` folder

@@ -1,8 +1,13 @@
 module.exports = {
 	options: { style: 'compressed' },
-	styles: {
+	shared: {
 		files: {
-			'build/min.css': 'src/scss/**/*.scss'
+			'build/shared.css': 'shared/scss/main.scss'
+		}
+	},
+	main: {
+		files: {
+			'build/main.css': 'src/scss/main.scss'
 		}
 	}
 };
