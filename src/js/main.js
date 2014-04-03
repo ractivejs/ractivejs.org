@@ -1,0 +1,3 @@
+require([
+	'shared/utils/nav'
+]);
