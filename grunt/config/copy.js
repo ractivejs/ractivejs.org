@@ -6,5 +6,9 @@ module.exports = {
 			src: '**',
 			dest: 'build/assets/'
 		}]
+	},
+	requirejs: {
+		src: 'shared/js/require.js',
+		dest: 'build/js/require.js'
 	}
 };

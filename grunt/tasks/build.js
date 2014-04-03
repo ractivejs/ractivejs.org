@@ -4,7 +4,10 @@ module.exports = function ( grunt ) {
 
 	grunt.registerTask( 'build', [
 		'clean',
-		'default'
+		'sass',
+		'requirejs',
+		'concat',
+		'copy'
 	]);
 
 };
