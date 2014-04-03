@@ -12,6 +12,17 @@ module.exports = function ( grunt ) {
 	config = {
 		pkg: grunt.file.readJSON( 'package.json' ),
 
+        paths: {
+            'shared': '../../shared/js',
+
+            // libraries
+            'ractive': 'lib/ractive',
+
+            // loaders
+            'amd-loader': 'loaders/amd-loader',
+            'rvc': 'loaders/rvc'
+        },
+
 		nav: function ( selected ) {
 			var partial = grunt.file.read( 'shared/partials/nav.html' );
             return grunt.template.process( partial, {

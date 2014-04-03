@@ -7,9 +7,7 @@ module.exports = {
 			optimize: 'uglify2',
 			logLevel: 2,
 
-			paths: {
-				'shared': '../../shared/js'
-			}
+			paths: '<%= paths %>'
 		}
 	}
 };
