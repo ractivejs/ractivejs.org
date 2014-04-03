@@ -1,48 +1,34 @@
+/* The one-size-fits-all key to Grunt.js happiness - http://bit.ly/grunt-happy */
+
 /*global module:false*/
-module.exports = function(grunt) {
+module.exports = function ( grunt ) {
 
-	// Project configuration.
-	grunt.initConfig({
+    'use strict';
 
-		watch: {
-			sass: {
-				files: 'project/styles/**/*.scss',
-				tasks: [ 'sass' ]
-			},
-			copy: {
-				files: 'project/src/**/*',
-				tasks: [ 'clean', 'copy', 'sass' ]
-			}
-		},
+    var config, dependency;
 
-		sass: {
-			options: { style: 'compressed' },
-			styles: {
-				files: {
-					'build/min.css': 'project/styles/**/*.scss'
-				}
-			}
-		},
+    config = {
+        pkg: grunt.file.readJSON( 'package.json' )
+    };
 
-		clean: {
-			files: 'build/*'
-		},
+    // Read config files from the `grunt/config/` folder
+    grunt.file.expand( 'grunt/config/*.js' ).forEach( function ( path ) {
+        var property = /grunt\/config\/(.+)\.js/.exec( path )[1],
+            module = require( './' + path );
+        config[ property ] = typeof module === 'function' ? module( grunt ) : module;
+    });
 
-		copy: {
-			example: {
-				files: [{expand: true, cwd: 'project/src/', src: ['**/*'], dest: 'build/'}]
-			}
-		}
+    // Initialise grunt
+    grunt.initConfig( config );
 
+    // Load development dependencies specified in package.json
+    for ( dependency in config.pkg.devDependencies ) {
+        if ( /^grunt-/.test( dependency) ) {
+            grunt.loadNpmTasks( dependency );
+        }
+    }
 
-	});
-
-	grunt.loadNpmTasks( 'grunt-contrib-sass' );
-	grunt.loadNpmTasks( 'grunt-contrib-watch' );
-	grunt.loadNpmTasks( 'grunt-contrib-copy' );
-	grunt.loadNpmTasks( 'grunt-contrib-clean' );
-
-	grunt.registerTask('default', [ 'sass', 'copy', 'watch' ]);
-	grunt.registerTask( 'build', [ 'clean', 'default' ] );
+    // Load tasks from the `grunt-tasks/` folder
+    grunt.loadTasks( 'grunt/tasks' );
 
 };

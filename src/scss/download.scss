@@ -1,0 +1,39 @@
+.download {
+	background-color: #fcfcfc;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	text-align: center;
+	padding: 0.5em;
+
+	code {
+		font-size: 1em;
+	}
+
+	.download-tags {
+		display: none;
+	}
+}
+
+@media (min-width: 36em) {
+	.download {
+		code {
+			font-size: 1em;
+		}
+
+		.download-tags {
+			display: inline;
+		}
+	}
+}
+
+@media (min-width: 48em) {
+	.download {
+		code {
+			font-size: 1.4em;
+		}
+
+		.download-tags {
+			display: inline;
+		}
+	}
+}
