@@ -6,8 +6,12 @@
 }
 
 .summary-block {
-	width: 33%;
+	width: 33.333%;
 	padding: 0 0.5em;
 	float: left;
 	@include border-box;
+
+	p {
+		margin: 0;
+	}
 }
