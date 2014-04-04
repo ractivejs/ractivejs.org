@@ -1,7 +1,15 @@
 module.exports = {
-	assets: {
+	shared: {
 		files: [{
 			cwd: 'shared/assets/',
+			expand: true,
+			src: '**',
+			dest: 'build/assets/'
+		}]
+	},
+	assets: {
+		files: [{
+			cwd: 'src/assets/',
 			expand: true,
 			src: '**',
 			dest: 'build/assets/'
