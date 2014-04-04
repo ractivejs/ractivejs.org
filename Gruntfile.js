@@ -11,10 +11,12 @@ module.exports = function ( grunt ) {
 
 	config = {
 		pkg: grunt.file.readJSON( 'package.json' ),
+		prod: grunt.option( 'prod' ),
 
         paths: {
             'shared': '../../shared',
-            'codemirror': 'shared/js/codemirror',
+            'codemirror': '../../shared/js/lib/codemirror',
+            'ace': '../../shared/js/lib/ace',
 
             // libraries
             'ractive': 'lib/ractive',

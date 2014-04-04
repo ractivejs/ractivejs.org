@@ -4,8 +4,9 @@ module.exports = {
 			out: 'build/js/main.js',
 			baseUrl: 'src/js/',
 			name: 'main',
-			optimize: 'uglify2',
-			logLevel: 2,
+			optimize: '<%= prod ? "uglify2" : "none" %>',
+			logLevel: 1,
+			keepBuildDir: true,
 
 			paths: '<%= paths %>'
 		}
