@@ -32,6 +32,7 @@ module.exports = function ( grunt ) {
                 data: { id: selected }
             });
 		},
+		head: grunt.file.read( 'shared/partials/head.html' ),
 		footer: grunt.file.read( 'shared/partials/footer.html' )
 	};
 
