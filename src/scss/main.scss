@@ -4,3 +4,29 @@
 @import "summary";
 @import "demo";
 @import "cta";
+
+
+main {
+	aside {
+		width: 80%;
+		font-size: 0.8em;
+		color: #999;
+		margin: 2em 0 0 0;
+	}
+
+	.left, .right {
+		position: relative;
+		float: left;
+		@include border-box;
+	}
+
+	.left {
+		width: 60%;
+		padding: 0 2em 0 0;
+	}
+
+	.right {
+		width: 40%;
+		padding: 0 0 0 2em;
+	}
+}
