@@ -1,0 +1,10 @@
+<input type='radio' name='{{type}}' value='C'>°C
+<input type='radio' name='{{type}}' value='F'>°F
+<svg>
+  <rect fill='lightblue' width='100%' height='100%'/>
+  <circle fill='gold' stroke='orange' cx='4em' cy='50%' r='3em'/>
+
+  <text x='90%' y='50%'>
+    {{type==='C' ? temp : Math.round((temp*1.8)+32) }}°
+  </text>
+</svg>

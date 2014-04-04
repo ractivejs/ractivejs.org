@@ -1,11 +1,108 @@
-<link rel='ractive' href='shared/components/codemirror'>
+<link rel='ractive' href='shared/components/codemirror.html'>
 
-<div class='template'>
-	<codemirror mode='htmlmixed' value='{{template}}'/>
+<div class='inner'>
+	<div class='input'>
+		{{#demos}}
+			<button class='{{selected === this ? "selected" : "" }}' on-click='select:{{this}}'>{{name}}</button>
+		{{/demos}}
+
+		<codemirror height='18em' mode='htmlmixed' value='{{template}}'/>
+		<codemirror height='10em' mode='json' value='{{data}}'/>
+	</div>
+
+	<div class='result-container output'>
+		<h2>Template + data = UI</h2>
+
+		<div class='result'></div>
+
+		<p><strong>Try editing the content of these boxes.</strong> When you change the data associated with a template, Ractive updates only those parts of the page that are out of date. Tedious DOM manipulation is a thing of the past.</p>
+
+		<p>Look at the <a href='http://examples.ractivejs.org/'>examples</a> and <a href='http://learn.ractivejs.org'>interactive tutorial</a> to discover how Ractive will make your life as a web developer easier.</p>
+	</div>
 </div>
 
-<div class='data'>
-	<codemirror mode='htmlmixed' value='{{data}}'/>
-</div>
 
-<div class='result'></div>
+<script>
+	var demos = require( 'data' ).demos;
+
+	require( 'lib/ractive-transitions-slide' );
+	require( 'lib/ractive-transitions-fly' );
+
+	component.exports = {
+		data: {
+			demos: demos
+		},
+
+		init: function () {
+			var ractive = this, instance, result, resetting;
+
+			result = this.find( '.result' );
+
+			select( demos[0] );
+
+			window.demo = this;
+
+			this.on({
+				select: function ( event, demo ) {
+					select( demo );
+				}
+			});
+
+			this.observe({
+				template: function ( template ) {
+					var parsedTemplate, parsedData;
+
+					try {
+						parsedTemplate = Ractive.parse( template );
+						parsedData = JSON.parse( this.get( 'data' ) );
+					} catch ( err ) {
+						return;
+					}
+
+					if ( instance ) {
+						instance.teardown();
+					}
+
+					instance = new Ractive({
+						el: result,
+						template: parsedTemplate,
+						data: parsedData
+					});
+
+					instance.observe( function ( data ) {
+						if ( resetting ) {
+							return;
+						}
+
+						resetting = true;
+						ractive.set( 'data', JSON.stringify( data, null, '  ' ) );
+						resetting = false;
+					});
+				},
+				data: function ( data ) {
+					var parsedData;
+
+					try {
+						parsedData = JSON.parse( data );
+						console.log( 'parsed data (%s)', typeof parsedData, parsedData );
+					}  catch ( err ) {
+						return;
+					}
+
+					if ( instance && !resetting ) {
+						resetting = true;
+						instance.reset( parsedData );
+						resetting = false;
+					}
+				}
+			});
+
+			function select ( demo ) {
+				ractive.set({
+					template: demo.template,
+					data: JSON.stringify( demo.data, null, '  ' )
+				});
+			}
+		}
+	};
+</script>
