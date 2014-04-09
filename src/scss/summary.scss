@@ -1,17 +1,26 @@
 @import "mixins";
 
-.summary {
-	margin: 0 -0.5em;
-	@include clearfix;
+.summary-block {
+	h2 {
+		margin: 0 0 0.5em 0;
+	}
 }
 
-.summary-block {
-	width: 33.333%;
-	padding: 0 0.5em;
-	float: left;
-	@include border-box;
 
-	p {
-		margin: 0;
+@media (min-width: 40em) {
+	.summary {
+		margin: 0 -0.5em;
+		@include clearfix;
+	}
+
+	.summary-block {
+		width: 33.333%;
+		padding: 0 0.5em;
+		float: left;
+		@include border-box;
+
+		p {
+			margin: 0;
+		}
 	}
 }
