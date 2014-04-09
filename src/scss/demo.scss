@@ -11,22 +11,14 @@
 	}
 
 	.input, .output {
-		float: left;
 		padding: 0 0.5em;
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
 	}
 
-	.input {
-		float: right;
-		width: 66.666%;
-	}
-
 	.output {
 		position: relative;
-		float: left;
-		width: 33.333%;
 
 		h2 {
 			margin: 0;
@@ -99,6 +91,24 @@
 			-ms-transition: width 0.1s ease-out;
 			-o-transition: width 0.1s ease-out;
 			transition: width 0.1s ease-out;
+		}
+	}
+}
+
+@media (min-width: 48em) {
+	.input {
+		float: right;
+		width: 66.666%;
+	}
+
+	.output {
+		position: relative;
+		float: left;
+		width: 33.333%;
+
+		h2 {
+			margin: 0;
+			font-size: 2em;
 		}
 	}
 }

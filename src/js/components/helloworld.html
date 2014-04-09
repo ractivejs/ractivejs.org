@@ -1,6 +1,16 @@
 <link rel='ractive' href='shared/components/codemirror.html'>
 
 <div class='inner'>
+	<div class='result-container output'>
+		<h2>Template + data = UI</h2>
+
+		<p><strong>Try editing the content of these boxes.</strong> When you change the data associated with a template, Ractive updates only those parts of the page that are out of date. Tedious DOM manipulation is a thing of the past.</p>
+
+		<p>Look at the <a href='http://examples.ractivejs.org/'>examples</a> and <a href='http://learn.ractivejs.org'>interactive tutorial</a> to discover how Ractive will make your life as a web developer easier.</p>
+
+		<div class='result'></div>
+	</div>
+
 	<div class='input'>
 		{{#demos}}
 			<button class='{{selected === this ? "selected" : "" }}' on-click='select:{{this}}'>{{name}}</button>
@@ -10,15 +20,7 @@
 		<codemirror height='10em' mode='json' value='{{data}}'/>
 	</div>
 
-	<div class='result-container output'>
-		<h2>Template + data = UI</h2>
 
-		<div class='result'></div>
-
-		<p><strong>Try editing the content of these boxes.</strong> When you change the data associated with a template, Ractive updates only those parts of the page that are out of date. Tedious DOM manipulation is a thing of the past.</p>
-
-		<p>Look at the <a href='http://examples.ractivejs.org/'>examples</a> and <a href='http://learn.ractivejs.org'>interactive tutorial</a> to discover how Ractive will make your life as a web developer easier.</p>
-	</div>
 </div>
 
 
