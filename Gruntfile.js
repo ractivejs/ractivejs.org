@@ -16,7 +16,6 @@ module.exports = function ( grunt ) {
         paths: {
             'shared': '../../shared',
             'codemirror': '../../shared/js/lib/codemirror',
-            'ace': '../../shared/js/lib/ace',
 
             // libraries
             'ractive': 'lib/ractive',
