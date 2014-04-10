@@ -26,5 +26,9 @@ module.exports = {
 	requirejs: {
 		src: 'shared/js/require.js',
 		dest: 'build/js/require.js'
+	},
+	CNAME: {
+		src: 'src/CNAME',
+		dest: 'build/CNAME'
 	}
 };
