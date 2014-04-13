@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- '0.10'
+before_script:
+- npm install -g grunt-cli; chmod u+x scripts/deploy-to-gh-pages.sh; grunt build
+script: ./scripts/deploy-to-gh-pages.sh
+env:
+  global:
+  - GH_REF: github.com/ractivejs/ractivejs.org.git
+  - secure: VQRxwHjqTjZ48gVocWJxoT9C7SfzZDf5Z3MpMwYuEAzMRf+1tS8FJoSDomeys93gQjC7/OnVtsEzt/hR5ERgHmXWSKHhVNGKeQU6gcobSUlvIolrpj1cg/AuOyCw/R/KbGGUDOq5mAO5j1pZZAlZ3ywWW20W2SMPAn45oqfKVwg=
+branches:
+  only:
+    - master
