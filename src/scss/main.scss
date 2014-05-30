@@ -5,6 +5,11 @@
 @import "demo";
 @import "cta";
 
+// IE8...
+header, nav, section, article, aside, footer {
+	display: block;
+}
+
 
 main {
 	aside {
