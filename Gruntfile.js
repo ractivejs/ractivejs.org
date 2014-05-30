@@ -18,11 +18,10 @@ module.exports = function ( grunt ) {
             'codemirror': '../../shared/js/lib/codemirror',
 
             // libraries
-            'ractive': 'lib/ractive',
+            'ractive': 'vendor/ractive/ractive-legacy',
 
             // loaders
-            'amd-loader': 'loaders/amd-loader',
-            'rvc': 'loaders/rvc'
+            'rvc': 'vendor/rvc/rvc'
         },
 
 		nav: function ( selected ) {

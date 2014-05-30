@@ -3,7 +3,7 @@
 	Ractive-transitions-fly
 	=======================
 
-	Version 0.1.1.
+	Version 0.1.2.
 
 	This transition uses CSS transforms to 'fly' elements to their
 	natural location on the page, fading in from transparent as they go.
@@ -13,20 +13,20 @@
 
 	Troubleshooting: If you're using a module system in your app (AMD or
 	something more nodey) then you may need to change the paths below,
-	where it says `require( 'Ractive' )` or `define([ 'Ractive' ]...)`.
+	where it says `require( 'ractive' )` or `define([ 'ractive' ]...)`.
 
 	==========================
 
 	Usage: Include this file on your page below Ractive, e.g:
 
-	    <script src='lib/Ractive.js'></script>
-	    <script src='lib/Ractive-transitions-fly.js'></script>
+	    <script src='lib/ractive.js'></script>
+	    <script src='lib/ractive-transitions-fly.js'></script>
 
 	Or, if you're using a module loader, require this module:
 
 	    // requiring the plugin will 'activate' it - no need to use
 	    // the return value
-	    require( 'Ractive-transitions-fly' );
+	    require( 'ractive-transitions-fly' );
 
 	You can adjust the following parameters: `x`, `y`, `duration`,
 	`delay` and `easing`.

@@ -3,7 +3,7 @@
 	ractive-transitions-slide
 	=========================
 
-	Version 0.1.1.
+	Version 0.1.2.
 
 	This transition slides an element in and out of view,
 	using CSS transitions where possible.
