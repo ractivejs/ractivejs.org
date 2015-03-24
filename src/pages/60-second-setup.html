@@ -1,9 +1,9 @@
 <link rel='ractive' href='./components/Page.html'>
 <link rel='ractive' href='./components/Analytics.html'>
 
-<Page title='Ractive.js | The diamond age of web development' tab='home'>
+<Page title='Ractive.js | The diamond age of web development' tab='setup'>
   {{#partial head}}
-
+    <link rel='stylesheet' href='main.css'>
   {{/partial}}
 
   <header>
@@ -15,7 +15,9 @@
   <main>
     <p>Create a file called <code>index.html</code> and paste in the following:</p>
 
-<pre class='prettyprint lang-html'>&lt;!doctype html&gt;
+    <div class='code-block'>
+      <h3>index.html</h3>
+      <pre>&lt;!doctype html&gt;
 &lt;html lang='en-GB'&gt;
 &lt;head&gt;
   &lt;meta charset='utf-8'&gt;
@@ -37,12 +39,12 @@
        just about anything except 'text/javascript'
   --&gt;
   &lt;script id='template' type='text/ractive'&gt;
-    &lt;p&gt;Hello, {{name}}!&lt;/p&gt;
+    &lt;p&gt;Hello, {{ "{{name}}" }}!&lt;/p&gt;
   &lt;/script&gt;
 
   &lt;!--
        3. You can always get the most recent stable version from the URL below.
-       If you want the newest features, use the 'edge' version instead:
+       If you want the newest features (unstable!), use the 'edge' version instead:
 
            http://cdn.ractivejs.org/edge/ractive.min.js
 
@@ -57,7 +59,7 @@
   &lt;script&gt;
     var ractive = new Ractive({
       // The `el` option can be a node, an ID, or a CSS selector.
-      el: 'container',
+      el: '#container',
 
       // We could pass in a string, but for the sake of convenience
       // we're passing the ID of the &lt;script&gt; tag above.
@@ -68,8 +70,8 @@
     });
   &lt;/script&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-</pre>
+&lt;/html&gt;</pre>
+    </div>
 
     <p>Now, open the page in a browser. You should see a 'Hello, world!' message. If you open the console and type <code>ractive.set('name', 'Jim')</code> the text will update.</p>
 
@@ -86,7 +88,7 @@
 
   {{#partial scripts}}
     <Analytics id='UA-5602942-3' property='ractivejs.org'/>
-
-    <script src='js/require.js' data-main='js/main'></script>
+    <script src='/assets/highlight.pack.js'></script>
+    <script src='/setup.js'></script>
   {{/partial}}
 </Page>

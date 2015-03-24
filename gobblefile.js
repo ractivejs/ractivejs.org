@@ -6,6 +6,23 @@ var common = gobble( 'node_modules/ractive-www' );
 var components = gobble([ 'src/components', common.grab( 'components' ) ]).moveTo( 'components' );
 var data = gobble( 'src/data' ).transform( 'spelunk', { type: 'es6', dest: 'data.js' });
 
+var js = gobble([ 'src/js', components, data ])
+	.transform( 'ractive', { type: 'es6' })
+	.transform( 'babel', {
+		whitelist: [
+			'es6.arrowFunctions',
+			'es6.blockScoping',
+			'es6.classes',
+			'es6.constants',
+			'es6.destructuring',
+			'es6.parameters.default',
+			'es6.parameters.rest',
+			'es6.properties.shorthand',
+			'es6.spread',
+			'es6.templateLiterals'
+		]
+	});
+
 module.exports = gobble([
 
 	// static stuff
@@ -30,7 +47,9 @@ module.exports = gobble([
 				var promises = files.map( function ( file ) {
 					if ( !/\.js$/.test( file ) ) return;
 
-					var Component = require( path.join( inputdir, file ) );
+					var modulePath = path.join( inputdir, file );
+
+					var Component = require( modulePath );
 					var html = new Component().toHTML();
 
 					return sander.writeFile( outputdir, file.replace( '.js', '.html' ), html );
@@ -41,22 +60,7 @@ module.exports = gobble([
 		}),
 
 	// javascript
-	gobble([ 'src/js', components, data ])
-		.transform( 'ractive', { type: 'es6' })
-		.transform( 'babel', {
-			whitelist: [
-				'es6.arrowFunctions',
-				'es6.blockScoping',
-				'es6.classes',
-				'es6.constants',
-				'es6.destructuring',
-				'es6.parameters.default',
-				'es6.parameters.rest',
-				'es6.properties.shorthand',
-				'es6.spread',
-				'es6.templateLiterals'
-			]
-		})
+	js
 		.transform( 'esperanto-bundle', {
 			entry: 'app',
 			type: 'cjs'
@@ -67,6 +71,19 @@ module.exports = gobble([
 			dest: 'app.js',
 			debug: true,
 			standalone: 'app'
+		}),
+
+	js
+		.transform( 'esperanto-bundle', {
+			entry: 'setup',
+			type: 'cjs'
+		})
+		.transform( 'derequire' )
+		.transform( 'browserify', {
+			entries: [ './setup' ],
+			dest: 'setup.js',
+			debug: true,
+			standalone: 'setup'
 		})
 
 ]);

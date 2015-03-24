@@ -15,6 +15,13 @@ main {
 	}
 }
 
+.hero {
+	h1 {
+		border: none;
+		display: inline-block;
+	}
+}
+
 @media (min-width: 32em) {
 	.hero {
 		h1 {

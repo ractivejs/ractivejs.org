@@ -3,7 +3,10 @@ import Nav from './components/Nav';
 import data from './data';
 
 // decorate nav
-new Nav({ el: '.nav-container' });
+new Nav({
+	el: '.nav-container',
+	data: { tab: 'home' }
+});
 
 // demo component
 new HelloWorld({

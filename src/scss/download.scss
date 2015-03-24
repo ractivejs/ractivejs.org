@@ -16,7 +16,17 @@
 	}
 }
 
-@media (min-width: 36em) {
+.protocol {
+	display: none;
+}
+
+@media (min-width: 24em) {
+	.protocol {
+		display: inline;
+	}
+}
+
+@media (min-width: 38em) {
 	.download {
 		code {
 			font-size: 1em;
@@ -28,14 +38,18 @@
 	}
 }
 
-@media (min-width: 48em) {
+@media (min-width: 46em) {
+	.download {
+		code {
+			font-size: 1.2em;
+		}
+	}
+}
+
+@media (min-width: 50em) {
 	.download {
 		code {
 			font-size: 1.4em;
-		}
-
-		.download-tags {
-			display: inline;
 		}
 	}
 }
