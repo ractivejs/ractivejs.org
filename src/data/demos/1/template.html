@@ -2,8 +2,8 @@
   <input type='checkbox' checked='{{visible}}'> visible?
 </label>
 
-{{#visible}}
+{{#if visible}}
   <div intro='fly:{x:300}' outro='fly:{duration:200}'>
     <strong class='peekaboo'>now you see me...</strong>
   </div>
-{{/visible}}
+{{/if}}

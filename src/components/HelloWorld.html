@@ -1,4 +1,4 @@
-<link rel='ractive' href='shared/components/codemirror.html'>
+<link rel='ractive' href='./Codemirror.html'>
 
 <div class='inner'>
 	<div class='result-container output'>
@@ -12,12 +12,15 @@
 	</div>
 
 	<div class='input'>
-		{{#demos}}
-			<button class='{{selected === this ? "selected" : "" }}' on-click='select:{{this}}'>{{name}}</button>
-		{{/demos}}
+		{{#each demos}}
+			<button
+				class='{{selected === this ? "selected" : "" }}'
+				on-click='select(this)'
+			>{{name}}</button>
+		{{/each}}
 
-		<codemirror height='18em' mode='htmlmixed' value='{{template}}'/>
-		<codemirror height='10em' mode='json' value='{{data}}'/>
+		<Codemirror height='18em' mode='htmlmixed' value='{{template}}'/>
+		<Codemirror height='10em' mode='json' value='{{data}}'/>
 	</div>
 
 
@@ -25,33 +28,24 @@
 
 
 <script>
-	var demos = require( 'data' ).demos;
-
-	require( 'vendor/ractive-transitions-slide/ractive-transitions-slide' );
-	require( 'vendor/ractive-transitions-fly/ractive-transitions-fly' );
+	/*global component, Ractive */
+	const slide = require( 'ractive-transitions-slide' );
+	const fly = require( 'ractive-transitions-fly' );
 
 	component.exports = {
 		data: {
-			demos: demos
+			template: null,
+			data: null
 		},
 
-		init: function () {
-			var ractive = this, instance, result, resetting;
+		onrender () {
+			var instance, result, resetting;
 
 			result = this.find( '.result' );
-
-			select( demos[0] );
-
-			window.demo = this;
-
-			this.on({
-				select: function ( event, demo ) {
-					select( demo );
-				}
-			});
+			this.select( this.get( 'demos[0]' ) );
 
 			this.observe({
-				template: function ( template ) {
+				template: template => {
 					var parsedTemplate, parsedData;
 
 					try {
@@ -68,20 +62,24 @@
 					instance = new Ractive({
 						el: result,
 						template: parsedTemplate,
-						data: parsedData
+						data: parsedData,
+						transitions: { slide, fly }
 					});
 
-					instance.observe( function ( data ) {
+					// workaround for https://github.com/ractivejs/ractive/issues/1868
+					instance.observe( 'foo', function () {} );
+
+					instance.observe( () => {
 						if ( resetting ) {
 							return;
 						}
 
 						resetting = true;
-						ractive.set( 'data', JSON.stringify( data, null, '  ' ) );
+						this.set( 'data', JSON.stringify( instance.get(), null, '  ' ) );
 						resetting = false;
 					});
 				},
-				data: function ( data ) {
+				data: data => {
 					var parsedData;
 
 					try {
@@ -97,13 +95,13 @@
 					}
 				}
 			});
+		},
 
-			function select ( demo ) {
-				ractive.set({
-					template: demo.template,
-					data: JSON.stringify( demo.data, null, '  ' )
-				});
-			}
+		select ( demo ) {
+			this.set({
+				template: demo.template,
+				data: JSON.stringify( demo.data, null, '  ' )
+			});
 		}
 	};
 </script>

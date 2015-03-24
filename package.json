@@ -1,18 +1,37 @@
 {
   "name": "ractivejs.org",
   "description": "The Ractive.js website",
+  "version": "0.2.0",
   "author": {
     "name": "Rich Harris"
   },
   "devDependencies": {
+    "gobble": "^0.7.9",
+    "gobble-babel": "^4.0.1",
+    "gobble-browserify": "^0.2.0",
+    "gobble-cli": "^0.3.5",
+    "gobble-derequire": "^0.1.1",
+    "gobble-esperanto-bundle": "^0.1.7",
+    "gobble-ractive": "^0.2.0",
+    "gobble-sass": "^0.4.0",
+    "gobble-spelunk": "^0.4.2",
     "grunt": "~0.4.4",
-    "grunt-sass": "~0.12.1",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "jit-grunt": "~0.3.2",
-    "grunt-contrib-concat": "~0.4.0",
     "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-concat": "~0.4.0",
+    "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-requirejs": "~0.4.3",
-    "grunt-spelunk": "~0.1.0"
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-sass": "~0.12.1",
+    "grunt-spelunk": "~0.1.0",
+    "jit-grunt": "~0.3.2",
+    "ractive": "^0.7.1",
+    "sander": "^0.2.2"
+  },
+  "dependencies": {
+    "codemirror": "^5.1.0",
+    "ractive-events-tap": "^0.2.0",
+    "ractive-transitions-fly": "^0.1.3",
+    "ractive-transitions-slide": "^0.2.0",
+    "ractive-www": "^0.2.0"
   }
 }
